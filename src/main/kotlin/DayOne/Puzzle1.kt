@@ -40,3 +40,16 @@ fun findCalibrationValue(line : String) : Int{
 
     return (firstDigit.toString()+lastDigit.toString()).toInt()
 }
+
+fun findCalibrationValue2(line : String) : Int{
+
+    var digitList = listOf<String>()
+
+    for(c in line){
+        if(c.isDigit()){
+            digitList += c.toString()
+        }
+    }
+
+    return if (digitList.size < 1) 0 else (digitList[0]+digitList[digitList.size-1]).toInt()
+}
