@@ -1,9 +1,6 @@
 package Day_1
 
-import java.io.File
-import java.io.InputStream
-import kotlin.coroutines.suspendCoroutine
-import kotlin.time.TimeSource
+import Function.readText
 
 /*
     Question:
@@ -24,11 +21,8 @@ import kotlin.time.TimeSource
  */
 fun main(){
 
-    val inputStream: InputStream = File("C:\\Users\\Okan\\IdeaProjects\\AdventOfCodePuzzles\\src\\main\\kotlin\\Day_1\\assets\\puzzle1.txt").inputStream()
-    val lineList = mutableListOf<String>()
-
+    var lineList = readText("C:\\Users\\Okan\\IdeaProjects\\AdventOfCodePuzzles\\src\\main\\kotlin\\Day_1\\assets\\Day1_input.txt")
     var calibrationSum = 0
-    inputStream.bufferedReader().forEachLine { lineList.add(it) }
 
     lineList.forEach{
         calibrationSum += findCalibrationValue(it)
@@ -68,6 +62,8 @@ private fun findCalibrationValue(line : String) : Int{
         digitList+=c.toString().toInt()
         numberStr = ""
     }
+    var digitSum=if(digitList.isEmpty()) 0 else ("${digitList[0]}${digitList[digitList.size-1]}").toInt()
+    println(digitSum)
 
     return if(digitList.isEmpty()) 0 else ("${digitList[0]}${digitList[digitList.size-1]}").toInt()
 }

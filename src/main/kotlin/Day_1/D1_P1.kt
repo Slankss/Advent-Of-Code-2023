@@ -1,7 +1,6 @@
 package Day_1
 
-import java.io.File
-import java.io.InputStream
+import Function.readText
 
 /*
     Question :
@@ -20,11 +19,8 @@ import java.io.InputStream
 
  */
 fun main(){
-    val inputStream: InputStream = File("C:\\Users\\Okan\\IdeaProjects\\AdventOfCodePuzzles\\src\\main\\kotlin\\Day_1\\assets\\puzzle1.txt").inputStream()
-    val lineList = mutableListOf<String>()
-
+    var lineList = readText("C:\\Users\\Okan\\IdeaProjects\\AdventOfCodePuzzles\\src\\main\\kotlin\\Day_1\\assets\\Day1_input.txt")
     var calibrationSum = 0
-    inputStream.bufferedReader().forEachLine { lineList.add(it) }
     lineList.forEach{
         calibrationSum += findCalibrationValue2(it)
     }
