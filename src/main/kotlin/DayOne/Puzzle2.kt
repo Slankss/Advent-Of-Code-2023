@@ -1,5 +1,0 @@
-package DayOne
-
-fun main(){
-
-}

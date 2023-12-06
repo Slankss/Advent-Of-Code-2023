@@ -1,22 +1,37 @@
-package DayOne
+package Day_1
 
 import java.io.File
 import java.io.InputStream
 
+/*
+    Question :
+        The newly-improved calibration document consists of lines of text; each line originally contained a specific calibration value that the Elves
+        now need to recover. On each line, the calibration value can be found by combining the first digit and the last digit (in that order)
+        to form a single two-digit number.
+
+        example : 1abc2
+        pqr3stu8vwx
+        a1b2c3d4e5f
+        treb7uchet
+
+        In this example, the calibration values of these four lines are 12, 38, 15, and 77. Adding these together produces 142.
+
+        Consider your entire calibration document. What is the sum of all of the calibration values?
+
+ */
 fun main(){
-    val inputStream: InputStream = File("C:\\Users\\Okan\\IdeaProjects\\AdventOfCodePuzzles\\src\\main\\kotlin\\puzzle1.txt").inputStream()
+    val inputStream: InputStream = File("C:\\Users\\Okan\\IdeaProjects\\AdventOfCodePuzzles\\src\\main\\kotlin\\Day_1\\assets\\puzzle1.txt").inputStream()
     val lineList = mutableListOf<String>()
 
     var calibrationSum = 0
     inputStream.bufferedReader().forEachLine { lineList.add(it) }
     lineList.forEach{
-
-        calibrationSum += findCalibrationValue(it)
+        calibrationSum += findCalibrationValue2(it)
     }
     println(calibrationSum)
 }
 
-fun findCalibrationValue(line : String) : Int{
+private fun findCalibrationValue(line : String) : Int{
 
     var firstDigit : Int? = null
     var lastDigit : Int? = null
@@ -42,14 +57,11 @@ fun findCalibrationValue(line : String) : Int{
 }
 
 fun findCalibrationValue2(line : String) : Int{
-
     var digitList = listOf<String>()
-
     for(c in line){
         if(c.isDigit()){
             digitList += c.toString()
         }
     }
-
     return if (digitList.size < 1) 0 else (digitList[0]+digitList[digitList.size-1]).toInt()
 }
